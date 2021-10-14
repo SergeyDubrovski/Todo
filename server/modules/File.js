@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const Week = new mongoose.Schema({
+const File = new mongoose.Schema({
 
     day : {type: String, required: true},
     time: {type: String},
@@ -8,4 +8,4 @@ const Week = new mongoose.Schema({
     training: [{type: ObjectId, ref: 'File'}] 
 })
 
-export default mongoose.model(Week, 'Week');
+export default mongoose.model(File, 'File'); 
