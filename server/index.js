@@ -1,12 +1,15 @@
-import express from 'express'
-import config from 'config'
-import mongoose from 'mongoose'
+import express from 'express';
+import config from 'config';
+import mongoose from 'mongoose';
+import authRouter from './router/router.auth.js';
+
 
 const app = express();
 const PORT = config.get('serverPort');
-const URL_DB = 'mongodb+srv://sedusedu:Serg1990@todo.melva.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const URL_DB = config.get('URL_DB'); 
 
-app.use(express.json);
+app.use(express.json());
+app.use('/', authRouter);
 
 async function appStart() {
     try {

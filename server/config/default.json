@@ -1,3 +1,6 @@
 {
-    "serverPort" : 5000
+    "serverPort" : 5000,
+     "URL_DB" : "mongodb+srv://sedusedu:Serg1990@todo.melva.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+     "secretKey" : "to-do-list"
+
 }
