@@ -1,9 +1,9 @@
-
+import ToDo from "./components/start/ToDo.jsx";
 
 function App() {
   return (
-    <div>TODO started </div>
-  );
+   <ToDo />
+  ); 
 }
 
 export default App;
