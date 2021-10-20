@@ -1,16 +1,20 @@
 import React from 'react';
-import s from './ToDo.module.css'; 
+import { NavLink } from 'react-router-dom';
+import styles from './ToDo.module.css'; 
  
 const ToDo = (props) => {
   return (
     <div>
-      <div className={s.box}>
-        <h1>Тренировка дня</h1>
-        <form className={s.form} type="submit">
-          <input className={s.text} value="" autofocus />
+      <div className={styles.box}>
+        <h1>План дня</h1>
+        <form className={styles.form} type="submit">
+          <input className={styles.text} value="" autofocus />
+          <input className={styles.text} value="" autofocus />
+          <input className={styles.text} value="" autofocus />
         </form>
-        <div className={s.listbox}></div>
-        <button className={s.button}>Удалить</button>
+        <div className={styles.listbox}></div>
+        <button className={styles.button}>Удалить</button>
+        <NavLink to="/">Выход</NavLink>
       </div>{" "}
     </div>
   );

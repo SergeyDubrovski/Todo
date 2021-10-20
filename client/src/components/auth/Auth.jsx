@@ -1,15 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ToDo from '../start/ToDo';
-const Start = () => {
-    return <NavLink to="/todo" />
+const start = () => {
+    console.log('start');
 }
 const Auth = (props) => {
     
     return (
         <div>
             <input />
-            <button onClick={Start}>Авторизация</button>
+            <NavLink to="/todo" onClick={start}>Авторизация</NavLink>
         </div>
     )
 }

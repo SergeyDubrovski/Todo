@@ -8,7 +8,7 @@ import ToDo from "../start/ToDo.jsx";
 const Begin = (props) => {
     return (
         <div>
-            <AuthBar />
+            <Route exact path="/" component={AuthBar} /> 
             <Route path="/todo" component={ToDo} />
             <Route path="/auth" component={Auth} />
             <Route path="/registr" component={Registr} />
