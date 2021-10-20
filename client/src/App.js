@@ -1,9 +1,14 @@
-import ToDo from "./components/start/ToDo.jsx";
+import { BrowserRouter } from "react-router-dom";
+import Begin from "./components/begin/Begin.jsx";
+
 
 function App() {
   return (
-   <ToDo />
-  ); 
+    <BrowserRouter>
+      <Begin />
+    </BrowserRouter>
+
+  );
 }
 
 export default App;
