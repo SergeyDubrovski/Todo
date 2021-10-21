@@ -2,10 +2,10 @@ import { BrowserRouter } from "react-router-dom";
 import Begin from "./components/begin/Begin.jsx";
 
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
-      <Begin />
+      <Begin state={props.state} />
     </BrowserRouter>
 
   );
