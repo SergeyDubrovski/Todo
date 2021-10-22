@@ -20,9 +20,10 @@
     border-radius: 10px;
   }
   
-  h1 {
-    padding: 20px 0;
-    color: #3e2723;
+  .week {
+    padding: 5px;
+    color: #364753;
+    border: solid 1px #3e2723; 
   }
   
   form input {
