@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
-import state from './redax/state.js'
+import state, { dayStart, subscribe } from './redax/state.js'
 
+let rerender = () => {
+  ReactDOM.render(
 
-ReactDOM.render(
-
-  <App state={state}/>
+  <App state={state} dayStart={dayStart} />
   ,
   document.getElementById('root')
 );
+}
+
+rerender();
+
+subscribe(rerender);
+
+
 
 

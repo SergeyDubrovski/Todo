@@ -1,23 +1,27 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
-import Day from "./day/Day";
-import styles from './Week.module.css';
-
+import { Link, NavLink } from "react-router-dom";
+import styles from "./Week.module.css";
 
 const Week = (props) => {
-  const dayStart = (e) => {
-
-    <Day state={props.state} day={e.target.id} />
-  }
-  const dayWeek = props.state.dayWeek.map(day =>
-    <div className={styles.text} id={day} onClick={dayStart}>{day}</div>
-  )
-
+  let dayStart = (e) => {
+    props.dayStart(e);
+    
+    
+  };
+  const dayWeek = props.state.dayWeek.map((day, index) => {
+   
+    return (
+      <Link to="/todo/day">
+        <div className={styles.text} id={index} onClick={dayStart}>{day}</div>
+        
+      </Link>
+    );
+  });
 
   return (
     <div>
+      
       <div className={styles.box}>
-
         <h1>1-я неделя</h1>
         <h1>2-я неделя</h1>
 
