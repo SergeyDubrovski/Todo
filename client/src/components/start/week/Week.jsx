@@ -17,8 +17,8 @@ const Week = (props) => {
   return (
     <div>
       <div className={styles.box}>
-        <h1>1-я неделя</h1>
-        <h1>2-я неделя</h1>
+        <h1>1 неделя</h1>
+        <h1>2 неделя</h1>
         <div className={styles.form} type="submit">
           {dayWeek}
         </div>
