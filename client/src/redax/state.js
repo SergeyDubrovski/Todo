@@ -3,7 +3,8 @@ let rerender = () => {
 }
 
 const state = {
-    dayWeek: ['понедельник',
+    dayWeek: [[
+        'понедельник',
         'вторник',
         'среда',
         'четверг',
@@ -11,17 +12,18 @@ const state = {
         'суббота',
         'воскресение'
     ],
-    dayWeekEng: [
+    [
         'mon',
-    'tue',
-    'wed',
-    'thu',
-    'fri',
-    'sat',
-    'sun'
-    ], 
+        'tue',
+        'wed',
+        'thu',
+        'fri',
+        'sat',
+        'sun'
+    ]],
 
-    day:'',
+    day: [],
+    text: '',
 
     week1: {
         mon: [],
@@ -43,8 +45,18 @@ const state = {
     },
 };
 export const dayStart = (e) => {
-    state.day = state.dayWeek[e.target.id]; 
-    
+    state.day[0] = state.dayWeek[0][e.target.id];
+    state.day[1] = state.dayWeek[1][e.target.id];
+
+    rerender();
+}
+export const planText = (e) => {
+    state.text = e.target.value;
+    rerender();
+}
+export const textAdd = () => {
+    state.week1[state.day[1]].push(state.text);
+    state.text = '';
     rerender(); 
 }
 export let subscribe = (observer) => {

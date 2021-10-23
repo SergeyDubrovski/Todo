@@ -8,7 +8,7 @@ const Week = (props) => {
     
     
   };
-  const dayWeek = props.state.dayWeek.map((day, index) => {
+  const dayWeek = props.state.dayWeek[0].map((day, index) => {
    
     return (
       <Link to="/todo/day">
