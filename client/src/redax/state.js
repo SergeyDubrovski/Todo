@@ -3,46 +3,24 @@ let rerender = () => {
 }
 
 const state = {
-    dayWeek: [[
-        'понедельник',
-        'вторник',
-        'среда',
-        'четверг',
-        'пятница',
-        'суббота',
-        'воскресение'
+    dayWeek: [
+        ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
+        ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
     ],
-    [
-        'mon',
-        'tue',
-        'wed',
-        'thu',
-        'fri',
-        'sat',
-        'sun'
-    ]],
 
     day: [],
     text: '',
 
-    week1: {
-        mon: [],
-        tue: [],
-        wed: [],
-        thu: [],
-        fri: [],
-        sat: [],
-        sun: []
-    },
-    week2: {
-        mon: [],
-        tue: [],
-        wed: [],
-        thu: [],
-        fri: [],
-        sat: [],
-        sun: []
-    },
+    week: {
+        mon: [[], []],
+        tue: [[], []],
+        wed: [[], []],
+        thu: [[], []],
+        fri: [[], []],
+        sat: [[], []],
+        sun: [[], []]
+    }
+
 };
 export const dayStart = (e) => {
     state.day[0] = state.dayWeek[0][e.target.id];
@@ -55,12 +33,13 @@ export const planText = (e) => {
     rerender();
 }
 export const textAdd = () => {
-    state.week1[state.day[1]].push(state.text);
+    state.week[state.day[1]][0].push(state.text);
     state.text = '';
-    rerender(); 
+    rerender();
 }
 export let subscribe = (observer) => {
     rerender = observer;
 }
 
 export default state;
+window.state = state;
