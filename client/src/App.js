@@ -5,7 +5,7 @@ import Begin from "./components/begin/Begin.jsx";
 function App(props) {
   return (
     <BrowserRouter>
-      <Begin state={props.state} dayStart={props.dayStart} planText={props.planText} textAdd={props.textAdd} />
+      <Begin state={props.state} dispatch={props.dispatch}  />
     </BrowserRouter>
 
   );

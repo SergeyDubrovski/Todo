@@ -9,8 +9,8 @@ const Begin = (props) => {
   return (
     <div>
       <Route exact path="/" render={() => <AuthBar />} />
-      <Route path="/todo" render={() => <ToDo state={props.state} dayStart={props.dayStart} />} />
-      <Route exact path="/todo/day" render={() => <Day state={props.state} planText={props.planText} textAdd={props.textAdd} />} /> 
+      <Route path="/todo" render={() => <ToDo state={props.state} dispatch={props.dispatch} />} />
+      <Route exact path="/todo/day" render={() => <Day state={props.state} dispatch={props.dispatch} />} /> 
       <Route path="/auth" render={() => <Auth />} />
       <Route path="/registr" render={() => <Registr />} />
     </div>

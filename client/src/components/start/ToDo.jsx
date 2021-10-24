@@ -3,7 +3,7 @@ import Week from './week/Week';
  
 const ToDo = (props) => {
   return (
-    <Week state={props.state} dayStart={props.dayStart} />
+    <Week state={props.state} dispatch={props.dispatch} />
   );
 }
 export default ToDo;
