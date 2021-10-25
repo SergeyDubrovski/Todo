@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import {actionDelTask} from "../../../../../redax/state" 
 const TodoList = (props) => {
+  const a = useRef();
   const delTask = (e) => {
     props.dispatch(actionDelTask(e))
   }
@@ -11,7 +12,7 @@ const TodoList = (props) => {
         <li id={index}>
           {value}
           <button onClick={delTask} id={index+100} >X</button>
-          <button id={index+200} >V</button> 
+          <button ref={a} onClick={()=>{a.current.style = 'background: red'}} id={index+200} >V</button> 
         </li>
       );
     });
