@@ -1,3 +1,6 @@
+import {dayStartReducer} from './reducers/dayStartReducer';
+import {taskDayReducer} from './reducers/taskDayReducer';
+
 const DAY_START = 'DAY-START';
 const PLAN_TEXT = 'PLAN-TEXT';
 const TASK_ADD = 'TASK-ADD';
@@ -7,12 +10,9 @@ let store = {
     _state: {
         dayWeek: [
             ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
-            ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-        ],
-
-        day: [],
-        text: '',
-        weekN: 0,
+            ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'],
+            []
+        ],       
 
         weekTask: {
             mon: [[], []],
@@ -21,7 +21,10 @@ let store = {
             thu: [[], []],
             fri: [[], []],
             sat: [[], []],
-            sun: [[], []]
+            sun: [[], []],
+            text: '',
+            weekN: 0,
+            day: []
         }
     },
 
@@ -32,32 +35,12 @@ let store = {
         console.log('State');
     },
     dispatch(action) {
-        switch (action.type) {
-            case DAY_START:
-                this._state.day[0] = this._state.dayWeek[0][action.e.target.id];
-                this._state.day[1] = this._state.dayWeek[1][action.e.target.id];
-                this._rerender();
-                break;
-            
-                case PLAN_TEXT:
-                this._state.text = action.e.target.value;
-                this._rerender();
-                break;
-            
-                case TASK_ADD:
-                this._state.weekTask[this._state.day[1]][action.weekN].push(this._state.text);
-                this._state.text = '';
-                this._rerender();
-                break;
+        this._state.dayWeek = dayStartReducer(this._state.dayWeek, action); 
+        this._state.weekTask.day[0] = this._state.dayWeek[2][0];
+        this._state.weekTask.day[1] = this._state.dayWeek[2][1];
+        this._state.weekTask = taskDayReducer(this._state.weekTask, action); 
 
-            case DEL_TASK:
-                this._state.weekTask[this._state.day[1]][this._state.weekN].splice(action.e.target.id-100, 1); 
-                this._rerender(); 
-                break;
-
-            default:
-                break;
-        }
+        this._rerender(); 
     },
 
     subscribe(observer) {

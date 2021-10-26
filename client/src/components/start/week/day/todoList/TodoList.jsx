@@ -6,8 +6,8 @@ const TodoList = (props) => {
     props.dispatch(actionDelTask(e))
   }
   let list;
-  if (props.state.day[1]) {
-    list = props.state.weekTask[props.state.day[1]][0].map((value, index) => {
+  if (props.state.dayWeek[2][1]) {
+    list = props.state.weekTask[props.state.dayWeek[2][1]][0].map((value, index) => {
       return (
         <li id={index}>
           {value}

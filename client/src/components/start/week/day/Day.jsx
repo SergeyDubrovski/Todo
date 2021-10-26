@@ -9,18 +9,18 @@ const Day = (props) => {
     props.dispatch(actionPlanText(e));
   };
   const taskAdd = () => {
-    props.dispatch(actionTaskAdd(props.state.weekN));
+    props.dispatch(actionTaskAdd(props.state.weekTask.weekN));
   };
 
   return (
     <div>
       <div className={styles.box}>
-        <h1>План {props.state.day[0]}</h1>
+        <h1>План {props.state.dayWeek[2][0]}</h1>
         <form className={styles.form} type="submit">
           <input
             onChange={planText}
             className={styles.text}
-            value={props.state.text}
+            value={props.state.weekTask.text}
           />
         </form>
         <div className={styles.listbox}>
