@@ -11,7 +11,7 @@ const  weekTaskDefoult = {
     sun: [[], []],
     text: '',
     weekN: 0,
-    day: [0,0] 
+    day: [0] 
 } 
 export const taskDayReducer = (state = weekTaskDefoult, action) => {
     switch (action.type) {
@@ -21,15 +21,21 @@ export const taskDayReducer = (state = weekTaskDefoult, action) => {
             return state 
         
             case TASK_ADD:
-            state[state.day[1]][action.weekN].push(state.text);
+            state.day[0] = action.day;    
+            state[state.day[0]][action.weekN].push(state.text);
+            
             state.text = '';
             return state  
 
         case DEL_TASK:
-            state[state.day[1]][state.weekN].splice(action.e.target.id-100, 1); 
+            state.day[0] = action.day;  
+            state[state.day[0]][state.weekN].splice(action.e.target.id-100, 1); 
             return state  
 
         default:  return state  
     }   
 }
+export const actionPlanText = e => ({ type: PLAN_TEXT, e });
+export const actionTaskAdd = (weekN, day) => ({ type: TASK_ADD, weekN, day });
+export const actionDelTask = (e, day) => ({ type: DEL_TASK, e, day }); 
 

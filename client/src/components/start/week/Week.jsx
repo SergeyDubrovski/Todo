@@ -1,10 +1,9 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Week.module.css";
-import { actionDayStart } from "../../../redax/state";
 const Week = (props) => {
   let dayStart = (e) => {
-    props.dispatch(actionDayStart(e));
+    props.dayStart(e);
   };
   const dayWeek = props.state.dayWeek[0].map((day, index) => {
     return (

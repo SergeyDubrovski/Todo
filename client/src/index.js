@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
-import store from './redax/state.js'
+import store from './redax/redux-store'
 
 let rerender = () => {
   ReactDOM.render(

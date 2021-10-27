@@ -17,4 +17,4 @@ export const dayStartReducer = (state = stateDefoult, action) => {
         default: return state;
     }
 }
-
+export const actionDayStart = e => ({ type: DAY_START, e }); 

@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import {actionDelTask} from "../../../../../redax/state" 
+
 const TodoList = (props) => {
   const a = useRef();
   const delTask = (e) => {
-    props.dispatch(actionDelTask(e))
+    props.delTask(e); 
   }
   let list;
   if (props.state.dayWeek[2][1]) {

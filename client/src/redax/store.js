@@ -1,10 +1,5 @@
-import {dayStartReducer} from './reducers/dayStartReducer';
+/*import {dayStartReducer} from './reducers/dayStartReducer';
 import {taskDayReducer} from './reducers/taskDayReducer';
-
-const DAY_START = 'DAY-START';
-const PLAN_TEXT = 'PLAN-TEXT';
-const TASK_ADD = 'TASK-ADD';
-const DEL_TASK = 'DEL-TASK';
 
 let store = {
     _state: {
@@ -36,8 +31,6 @@ let store = {
     },
     dispatch(action) {
         this._state.dayWeek = dayStartReducer(this._state.dayWeek, action); 
-        this._state.weekTask.day[0] = this._state.dayWeek[2][0];
-        this._state.weekTask.day[1] = this._state.dayWeek[2][1];
         this._state.weekTask = taskDayReducer(this._state.weekTask, action); 
 
         this._rerender(); 
@@ -49,11 +42,5 @@ let store = {
 
 }
 
-export const actionDayStart = e => ({ type: DAY_START, e });
-export const actionPlanText = e => ({ type: PLAN_TEXT, e });
-export const actionTaskAdd = weekN => ({ type: TASK_ADD, weekN });
-export const actionDelTask = e => ({ type: DEL_TASK, e });
-
-
 export default store;
-window.store = store;
+window.store = store;*/

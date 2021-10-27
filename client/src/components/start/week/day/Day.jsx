@@ -2,14 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Day.module.css";
 import TodoList from "./todoList/TodoList";
-import {actionPlanText, actionTaskAdd} from "../../../../redax/state"
 
 const Day = (props) => {
   const planText = (e) => {
-    props.dispatch(actionPlanText(e));
+    props.planText(e);
   };
   const taskAdd = () => {
-    props.dispatch(actionTaskAdd(props.state.weekTask.weekN));
+    props.taskAdd();
   };
 
   return (
@@ -24,7 +23,7 @@ const Day = (props) => {
           />
         </form>
         <div className={styles.listbox}>
-          <TodoList state={props.state} dispatch={props.dispatch} />
+          <TodoList state={props.state} delTask={props.delTask} />
         </div>
         <button className={styles.button} onClick={taskAdd}>
           Добавить
