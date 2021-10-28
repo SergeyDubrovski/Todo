@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import {
-  actionGetDay,
   actionDelTask,
   actionPlanText,
   actionTaskAdd,
@@ -34,16 +33,15 @@ const DayContainer = (props) => {
 
 const mapStateToProps = (state) => {
   
+  state.weekTask.day[0] = state.dayWeek[2][1];
+  state.weekTask.day[1] = state.dayWeek[2][0];
   return {
     weekTask: state.weekTask
-  }
+   }
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    getDay: (day, day1) => {
-      dispatch(actionGetDay(day, day1))
-},
-    planText: (body) => {
+      planText: (body) => {
       dispatch(actionPlanText(body))
   },
     taskAdd: (weekN, day, day1) => {

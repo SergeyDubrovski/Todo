@@ -4,10 +4,6 @@ import styles from "./Day.module.css";
 import TodoList from "./todoList/TodoList";
 
 const Day = (props) => {
-  const getDay = () => {
-    props.getDay(props.weekTask.day[0], props.weekTask.day[1])
-  }
-  getDay();
   const planText = (e) => {
     props.planText(e.target.value);
   };
