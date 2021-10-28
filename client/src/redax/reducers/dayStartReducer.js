@@ -4,17 +4,19 @@ const stateDefoult = [
         ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'],
         []       
     ];
+    
 export const dayStartReducer = (state = stateDefoult, action) => {
     
     switch (action.type) {
         
         case DAY_START:
-            state[2][0] = state[0][action.e.target.id];
-            state[2][1] = state[1][action.e.target.id];
-            
-            return state;
+            let stateCopy = {...state};
+            stateCopy[2][0] = stateCopy[0][action.body];
+            stateCopy[2][1] = stateCopy[1][action.body];
+               
+            return stateCopy;
 
         default: return state;
     }
 }
-export const actionDayStart = e => ({ type: DAY_START, e }); 
+export const actionDayStart = body => ({ type: DAY_START, body }); 

@@ -3,11 +3,11 @@ import React, { useRef } from "react";
 const TodoList = (props) => {
   const a = useRef();
   const delTask = (e) => {
-    props.delTask(e); 
+    props.delTask(e.target.id, props.weekTask.day[0], props.weekTask.day[1]); 
   }
   let list;
-  if (props.state.dayWeek[2][1]) {
-    list = props.state.weekTask[props.state.dayWeek[2][1]][0].map((value, index) => {
+  if (props.weekTask.day[0]) {
+    list = props.weekTask[props.weekTask.day[0]][0].map((value, index) => {
       return (
         <li id={index}>
           {value}

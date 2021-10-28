@@ -1,5 +1,4 @@
-import React from "react";
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { actionDayStart } from "../../../redax/reducers/dayStartReducer";
 import Week from "./Week";
 
@@ -10,7 +9,17 @@ import Week from "./Week";
  return <Week state={props.state} dayStart={dayStart}  />
 };*/
 
-const mapStateToProps 
-
-const WeekContainer =  connect(mapStateToProps, mapDispatchToProps, mergeProps)(component);
-export default WeekContainer; 
+const mapStateToProps = (state) => {
+  return {
+    dayWeek: state.dayWeek
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dayStart: (body) => {
+      dispatch(actionDayStart(body));
+    }
+  }
+}
+const WeekContainer = connect(mapStateToProps, mapDispatchToProps)(Week);
+export default WeekContainer;
