@@ -3,7 +3,7 @@ import {
   actionDelTask,
   actionPlanText,
   actionTaskAdd,
-} from "../../../../redax/reducers/taskDayReducer";
+} from "../../../redax/reducers/taskDayReducer";
 import Day from "./Day";
 
 /*

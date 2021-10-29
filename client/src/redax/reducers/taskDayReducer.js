@@ -1,3 +1,4 @@
+const DAY_START = 'DAY-START';
 const PLAN_TEXT = 'PLAN-TEXT';
 const TASK_ADD = 'TASK-ADD';
 const DEL_TASK = 'DEL-TASK'; 
@@ -17,6 +18,9 @@ export const taskDayReducer = (state = weekTaskDefoult, action) => {
     let stateCopy = {...state};
     switch (action.type) {
         
+        case DAY_START:
+            stateCopy.day = [...state.day];
+            return stateCopy 
          
             case PLAN_TEXT:
             stateCopy.text = action.body;

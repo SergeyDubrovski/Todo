@@ -10,7 +10,7 @@
     height: 100%;
     margin-top: 100px;
   
-    background-image: url(../../../../picture/bg.png);
+    background-image: url(../../../picture/bg.png);
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: bottom right 20px;
