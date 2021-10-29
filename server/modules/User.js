@@ -7,4 +7,4 @@ const User = new mongoose.Schema({
     //name: { type: String, required: true, unique: true },
 });
 
-export default mongoose.model('User', User, );
+export default mongoose.model('User', User);

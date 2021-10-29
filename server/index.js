@@ -2,6 +2,7 @@ import express from 'express';
 import config from 'config';
 import mongoose from 'mongoose';
 import authRouter from './router/router.auth.js';
+import weekRouter from './router/router.week.js';
 
 
 const app = express();
@@ -10,6 +11,7 @@ const URL_DB = config.get('URL_DB');
 
 app.use(express.json());
 app.use('/', authRouter);
+app.use('/todo', weekRouter)
 
 async function appStart() {
     try {
