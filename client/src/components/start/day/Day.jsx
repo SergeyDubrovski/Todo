@@ -4,11 +4,14 @@ import styles from "./Day.module.css";
 import TodoList from "./todoList/TodoList";
 
 const Day = (props) => {
+
   const planText = (e) => {
     props.planText(e.target.value);
   };
   const taskAdd = () => {
-    props.taskAdd(props.weekTask.weekN, props.weekTask.day[0], props.weekTask.day[1]);
+    const weekN = props.weekTask.weekN;
+    console.log(weekN);
+    props.taskAdd(weekN, props.weekTask.day[0], props.weekTask.day[1]);
   };
 
   return (

@@ -32,7 +32,7 @@ const DayContainer = (props) => {
 };*/
 
 const mapStateToProps = (state) => {
-  
+  state.weekTask.weekN = state.dayWeek[3];
   state.weekTask.day[0] = state.dayWeek[2][1];
   state.weekTask.day[1] = state.dayWeek[2][0];
   return {

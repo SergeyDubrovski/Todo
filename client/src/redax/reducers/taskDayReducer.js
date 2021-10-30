@@ -1,3 +1,4 @@
+const WEEK_START = 'WEEK-START';
 const DAY_START = 'DAY-START';
 const PLAN_TEXT = 'PLAN-TEXT';
 const TASK_ADD = 'TASK-ADD';
@@ -15,8 +16,13 @@ const weekTaskDefoult = {
     day: ['', '']
 }
 export const taskDayReducer = (state = weekTaskDefoult, action) => {
+    
     let stateCopy = { ...state };
+    
     switch (action.type) {
+
+        case WEEK_START:
+            return {...state};
 
         case DAY_START:
             return { ...state, day: [...state.day] };
@@ -25,8 +31,11 @@ export const taskDayReducer = (state = weekTaskDefoult, action) => {
             return { ...state, text: action.body };
 
         case TASK_ADD:
-            stateCopy = { ...state, day: [action.day, action.day1], text:''};
+            stateCopy.weekN = action.weekN;
+            console.log(action.weekN);
             stateCopy[state.day[0]][action.weekN].push(state.text);
+            stateCopy = { ...state, day: [action.day, action.day1], text: '' };
+            
             return stateCopy
 
         case DEL_TASK:
