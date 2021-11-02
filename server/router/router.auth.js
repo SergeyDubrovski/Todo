@@ -2,7 +2,7 @@ import Router, { json } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator'
-import User from '../modules/User.js';
+import User from '../models/User.js';
 import config from 'config';
 
 const authRouter = new Router();

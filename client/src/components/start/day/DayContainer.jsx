@@ -36,24 +36,23 @@ const mapStateToProps = (state) => {
   state.weekTask.day[0] = state.dayWeek[2][1];
   state.weekTask.day[1] = state.dayWeek[2][0];
   return {
-    weekTask: state.weekTask
-   }
+    weekTask: state.weekTask,
+  };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-      planText: (body) => {
-      dispatch(actionPlanText(body))
-  },
+    planText: (body) => {
+      dispatch(actionPlanText(body));
+    },
     taskAdd: (weekN, day, day1) => {
-      dispatch(actionTaskAdd(weekN, day, day1))
+      dispatch(actionTaskAdd(weekN, day, day1));
     },
     delTask: (e, day, day1) => {
-      dispatch(actionDelTask(e, day, day1))
-    }
-  }
-}
+      dispatch(actionDelTask(e, day, day1));
+    },
+  };
+};
 
 const DayContainer = connect(mapStateToProps, mapDispatchToProps)(Day);
-
 
 export default DayContainer;

@@ -1,0 +1,106 @@
+установить node.js
+npm init
+npm i express
+npm i -D nodemon
+package.json:
+"type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  }, 
+import express from 'express';
+const app = express();
+app.use (express.json());  запускается формат json
+import Router from 'express'; 
+const router = new Router();  создание роутеров
+npm i cors для работы с фронтендом
+
+const corsMiddleware = (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*" );
+    res.header("Access-Control-Allow-Methods", "GET, PUT, PUTCH, POST, DELETE" );
+    res.header("Access-Control-Allow-Heders", "Content-type" );
+    next();
+}
+export default corsMiddleware;
+app.use(corsMiddleware);
+
+npm run dev  запуск через nodemon
+
+mongoDB
+claud
+mongoose.conect(url,....)
+
+Post.js схема создания DB экспорт в PostServise.js
+
+создается класс PostServise с методами create, getAll, getOne, update, delete
+на основе Post.find и т.д.  
+
+PostServise экспортируется в класс PostController где на основе его методов запускается обработка запросов
+и ответов различных методов CURD
+
+в файле route создаются роутеры на основе методов PostController 
+
+в файле index.js 
+app.use('/', route) подключается роутеры
+
+Слои абстракции: DAL (data access layer) слой доступа к данным Mongoose (Post.js)
+
+клиент-серверная часть - Controller
+
+бизнес логика - Servise работа с БД и входными параметрами
+
+Генерация ID:
+npm i uuid 
+import * as uuid from 'uuid'
+
+ФАЙЛЫ:
+
+npm i express-fileupload
+import fileupload, 
+import * as uuid from 'uuid' 
+import * as path from 'path' модуль для работы с путями
+app.use(fileupload({}))
+
+создание файла 
+saveFile(file) {
+  const fileName = uuid.v4() + '.jpeg';
+  const filePath = path.resolve('static', fileName) создает путь файла в корень проекта
+  file.mv(filePath) записывает файл по пути filePath 
+  return fileName
+}
+app.use(express.static('static')) для работы со статическими файлами
+
+Авторизация: npm i bcrypt 
+const hashPassword = await bcrypt.hash(password, 12 ) хеширование пароля
+const isPassValid = await bcrypt.compareSync(password, user.password) сравнение паролей
+
+Валидация: npm i express-validator 
+authRouter.post('/registr',
+    [
+        check('email', 'Incorrect email').isEmail(), проверка валидации по email
+        check('password', 'Password will be longer than 3 and shorter then 12').isLength({ min: 3, max: 12 }) 
+        по длине
+    ],
+    async (req, res) => {} 
+
+    try {
+            const errors = validationResult(req) проверка на ошибку
+            if (!errors.isEmpty()) { если ошибка есть....
+                return res.status(400).json({ message: 'Incorrect request', errors })
+            } 
+        }
+
+token: npm i jsonwebtoken 
+const token = jwt.sign({id: User.id})
+файл config/default "secretKey" : "............."  
+const token = jwt.sign({id: User.id}, config.get('secretKey'), {expiresIn: '1h'})
+                      заголовок       секретный ключ из конфига   время действия
+
+
+
+
+
+
+
+
+

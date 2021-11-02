@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch) => {
     weekStart: (weekN) => {
       dispatch(actionWeekStart(weekN)); 
     },
-    dayStart: (body) => {
-      dispatch(actionDayStart(body));
+    dayStart: (e, day) => {
+      dispatch(actionDayStart(e, day));
     }
   }
 }

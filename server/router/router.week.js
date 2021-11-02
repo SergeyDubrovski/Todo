@@ -1,5 +1,5 @@
 import Router, { json } from 'express';
-import Week from '../modules/Week.js';
+import Week from '../models/Week.js';
 
 
 const weekRouter = new Router();
@@ -16,13 +16,12 @@ weekRouter.post('/day', async (req, res) => {
     }
 })
 
-weekRouter.get('/day/', async (req, res) => {
+weekRouter.get('/day', async (req, res) => {
 
     try {
        
         const week = await Week.find();
-        
-        res.status(200).json(req.query);
+        res.status(200).json(week);
     } catch (error) {
         console.log(error);
         res.send({ message: 'Server error' });

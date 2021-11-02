@@ -1,16 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Day.module.css";
+import DayGive from "./DayGive";
 import TodoList from "./todoList/TodoList";
 
 const Day = (props) => {
-
   const planText = (e) => {
     props.planText(e.target.value);
   };
   const taskAdd = () => {
     const weekN = props.weekTask.weekN;
-    console.log(weekN);
     props.taskAdd(weekN, props.weekTask.day[0], props.weekTask.day[1]);
   };
 
@@ -31,7 +30,7 @@ const Day = (props) => {
         <button className={styles.button} onClick={taskAdd}>
           Добавить
         </button>
-        <NavLink to="/">Выход</NavLink>
+        <Link to="/save"><div>Сохранить</div></Link>
       </div>
     </div>
   );

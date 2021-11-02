@@ -1,0 +1,41 @@
+npx create-react-app 
+npm i react-router-dom -save (save для того, чтобы записалось в pacage.json и была библиотека доступна 
+на github)
+import style from './ToDo.module.css';  
+<Router path = "/jdskj" render={() => <Sgsgd />} />
+<NavLink to = "/jdskj" activeClassName = {style.active}>wgwgew</NavLink> ссылка типа <a>
+<Link to="/todo/day">     
+        <div className={styles.text} id={index} onClick={dayStart}>
+          {day}
+        </div>
+      </Link>  привязка к кнопке
+
+Redux:
+ npm i redux --save   
+const actionDayStart = e => ({ type: DAY_START, e });  action creator возвращает обязательно active.type 
+
+dispatch={store.dispatch.bind(store)} 
+ props.dispatch(actionDelTask(e, props.state.dayWeek[2][1])) метод диспатч возвращает action и часть store  
+
+редюсеры принимают action и state и возвращают измененный или не измененный state в store
+export const dayStartReducer = (state = stateDefoult, action) => {
+    
+    switch (action.type) {
+        
+        case DAY_START:
+            state[2][0] = state[0][action.e.target.id];
+            state[2][1] = state[1][action.e.target.id];
+            
+            return state;
+
+        default: return state;
+    }
+}  
+ 
+ store:    
+let redusers = combineReducers({
+    dayWeek: dayStartReducer,
+    weekTask: taskDayReducer
+});
+
+let store = createStore(redusers); 
