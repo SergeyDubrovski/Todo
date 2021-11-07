@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { actionWeekStart, actionDayStart } from "../../../redax/reducers/dayStartReducer";
+import { weekStart, dayStart } from "../../../redax/reducers/dayStartReducer";
 import Week from "./Week";
 
 /*const WeekContainer = (props) => {
@@ -14,15 +14,10 @@ const mapStateToProps = (state) => {
     dayWeek: state.dayWeek
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    weekStart: (weekN) => {
-      dispatch(actionWeekStart(weekN)); 
-    },
-    dayStart: (e, day) => {
-      dispatch(actionDayStart(e, day));
-    }
-  }
+const mapDispatchToProps = {
+weekStart,
+dayStart
 }
+
 const WeekContainer = connect(mapStateToProps, mapDispatchToProps)(Week);
 export default WeekContainer;

@@ -3,17 +3,17 @@ import React, { useRef } from "react";
 const TodoList = (props) => {
   const a = useRef();
   const delTask = (e) => {
-    props.delTask(e.target.id, props.weekTask.day[0], props.weekTask.day[1]);
+    props.delTask(Number(e.target.id));
   };
-  let list;
-
-  if (props.weekTask.day[0]) {
-    list = props.weekTask.task[props.weekTask.day[0]][props.weekTask.weekN].map(
-      (value, index) => {
+  
+  const list = () => { 
+   return props.weekTask.task[props.weekTask.day][props.weekTask.weekStart+2].map(
+      (value, index) => { 
+        
         return (
-          <li id={index} key={value.id}>
+          <li id={index}>
             {value}
-            <button onClick={delTask} id={index} >
+            <button onClick={delTask} id={index} key={value.id} >
               X
             </button>
             <button
@@ -30,7 +30,9 @@ const TodoList = (props) => {
         );
       }
     );
-  } else list = "";
-  return <div>{list}</div>;
+  };
+
+  return <div>{list()}</div>;
 };
+
 export default TodoList;

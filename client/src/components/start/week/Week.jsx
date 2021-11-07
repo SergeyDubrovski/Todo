@@ -7,19 +7,19 @@ const Week = (props) => {
     props.weekStart(e.target.id);
   };
 
-  let dayStart = (e, day) => {
-    props.dayStart(e.target.id, day);
+  let dayStart = (e) => {
+    props.dayStart(Number(e.target.id));
   };
-  const dayWeek = props.dayWeek[0].map((day, index) => {
+  const dayWeek = props.dayWeek.task.map((day, index) => {
     return (
       <Link to="/todo/day" key={index.id}>
         <div
           className={styles.text}
-          id={props.dayWeek[1][index]}
-          key={day.id}
-          onClick={(e) => dayStart(e, day)}
+          id={index}
+          key={day[1].id}
+          onClick={dayStart}
         >
-          {day}
+          {day[1]}
         </div>
       </Link>
     );

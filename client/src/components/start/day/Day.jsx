@@ -1,22 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Day.module.css";
-import DayGive from "./DayGive";
+import DayGive from "./DayGiveContainer";
 import TodoList from "./todoList/TodoList";
 
 const Day = (props) => {
-  const planText = (e) => {
+   const planText = (e) => {
     props.planText(e.target.value);
   };
   const taskAdd = () => {
-    const weekN = props.weekTask.weekN;
-    props.taskAdd(weekN, props.weekTask.day[0], props.weekTask.day[1]);
+    props.taskAdd([props.weekTask.day, props.weekTask.weekStart+2]);
   };
 
   return (
     <div>
       <div className={styles.box}>
-        <h1>План {props.weekTask.day[1]}</h1>
+        <h1>План {props.weekTask.task[props.weekTask.day][1]}</h1>
         <form className={styles.form} type="submit">
           <input
             onChange={planText}
@@ -25,12 +24,15 @@ const Day = (props) => {
           />
         </form>
         <div className={styles.listbox}>
-          <TodoList weekTask={props.weekTask} delTask={props.delTask} />
+          <TodoList weekTask={props.weekTask} delTask={props.delTask}/>
         </div>
         <button className={styles.button} onClick={taskAdd}>
           Добавить
         </button>
-        <Link to="/save"><div>Сохранить</div></Link>
+        
+        <Link to="/save">
+          <div>Сохранить</div>
+        </Link>
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
+import React from "react";
 import { connect } from "react-redux";
+import * as axios from "axios";
 import {
-  actionDelTask,
-  actionPlanText,
-  actionTaskAdd,
+  delTask,
+  planText,
+  taskAdd,
 } from "../../../redax/reducers/taskDayReducer";
 import Day from "./Day";
 
@@ -30,29 +32,47 @@ const DayContainer = (props) => {
     />
   );
 };*/
+class DayConteinerConnect extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    axios.get("http://localhost:5000/todo/day").then((response) => {
+    if(response.data[0]){
+        this.props.weekTask.task = response.data[0].task.map((volume, index) => {
+      return volume
+    })     
+    }
+  
+    
+    });
+  }
+  render() {
+    return <Day
+      weekTask={this.props.weekTask}
+      planText={this.props.planText}
+      taskAdd={this.props.taskAdd}
+      delTask={this.props.delTask}
+    />;
+  }
+}
 
 const mapStateToProps = (state) => {
-  state.weekTask.weekN = state.dayWeek[3];
-  state.weekTask.day[0] = state.dayWeek[2][1];
-  state.weekTask.day[1] = state.dayWeek[2][0];
+  state.weekTask.weekStart = state.dayWeek.weekStart;
+  state.weekTask.day = state.dayWeek.dayStart;
   return {
     weekTask: state.weekTask,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    planText: (body) => {
-      dispatch(actionPlanText(body));
-    },
-    taskAdd: (weekN, day, day1) => {
-      dispatch(actionTaskAdd(weekN, day, day1));
-    },
-    delTask: (e, day, day1) => {
-      dispatch(actionDelTask(e, day, day1));
-    },
-  };
+const mapDispatchToProps = {
+  planText,
+  taskAdd,
+  delTask,
 };
 
-const DayContainer = connect(mapStateToProps, mapDispatchToProps)(Day);
+const DayContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DayConteinerConnect);
 
 export default DayContainer;

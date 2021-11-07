@@ -15,11 +15,22 @@ weekRouter.post('/day', async (req, res) => {
         res.send({ message: 'Server error' });
     }
 })
+weekRouter.put('/day', async (req, res) => {
+
+    try {
+
+        const week = await Week.findOneAndUpdate({}, { task: [...req.body.task] });
+        res.status(200).json(week);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: 'Server error' });
+    }
+})
 
 weekRouter.get('/day', async (req, res) => {
 
     try {
-       
+
         const week = await Week.find();
         res.status(200).json(week);
     } catch (error) {
@@ -27,5 +38,19 @@ weekRouter.get('/day', async (req, res) => {
         res.send({ message: 'Server error' });
     }
 })
+
+weekRouter.delete('/day', async (req, res) => {
+
+    try {
+
+        await Week.deleteMany();
+
+        res.status(200).json();
+    } catch (error) {
+        console.log(error);
+        res.send({ message: 'Server error' });
+    }
+})
+
 
 export default weekRouter;
